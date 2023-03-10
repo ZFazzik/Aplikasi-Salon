@@ -63,6 +63,9 @@
                     Notification
                 </h6>
                 @foreach($barang as $b)
+                @if(count($barang) == 0)
+                    <a class="dropdown-item text-center small text-gray-500" href="#">Selamat! anda tidak punya notifikasi</a>
+                @endif
                 <a class="dropdown-item d-flex align-items-center notif-hapus" href="#">
                     <div class="mr-3">
                         <div class="icon-circle bg-warning">
