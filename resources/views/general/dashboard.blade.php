@@ -15,10 +15,10 @@
 
 
 @if(auth()->user()->level == 2)
-<div class="bg-light p-5 rounded border">
-
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
     <h3>Selamat Datang di dashboard {{auth()->user()->name}}!</h3>
-
+  </div>
 </div>
 @endif
 
