@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dashboard;
 use App\Models\Barang;
+use App\Models\Penjualan;
 use App\Models\Info;
 use Illuminate\Http\Request;
 
@@ -28,8 +29,34 @@ class DashboardController extends Controller
         $barang = Barang::where('notif', '!=', 0)
         ->where('jenis', '=', 'Barang')
         ->get();
+        $laba_jan = Penjualan::whereBetween('created_at', [ date('Y').'-01-01 00:00:00', date('Y').'-02-01 00:00:00'])
+        ->sum('laba');
+        $laba_feb = Penjualan::whereBetween('created_at', [ date('Y').'-02-01 00:00:00', date('Y').'-03-01 00:00:00'])
+        ->sum('laba');
+        $laba_mar = Penjualan::whereBetween('created_at', [ date('Y').'-03-01 00:00:00', date('Y').'-04-01 00:00:00'])
+        ->sum('laba');
+        $laba_apr = Penjualan::whereBetween('created_at', [ date('Y').'-04-01 00:00:00', date('Y').'-05-01 00:00:00'])
+        ->sum('laba');
+        $laba_mei = Penjualan::whereBetween('created_at', [ date('Y').'-05-01 00:00:00', date('Y').'-06-01 00:00:00'])
+        ->sum('laba');
+        $laba_jun = Penjualan::whereBetween('created_at', [ date('Y').'-06-01 00:00:00', date('Y').'-07-01 00:00:00'])
+        ->sum('laba');
+        $laba_jul = Penjualan::whereBetween('created_at', [ date('Y').'-07-01 00:00:00', date('Y').'-08-01 00:00:00'])
+        ->sum('laba');
+        $laba_agus = Penjualan::whereBetween('created_at', [ date('Y').'-08-01 00:00:00', date('Y').'-09-01 00:00:00'])
+        ->sum('laba');
+        $laba_sep = Penjualan::whereBetween('created_at', [ date('Y').'-09-01 00:00:00', date('Y').'-10-01 00:00:00'])
+        ->sum('laba');
+        $laba_okt = Penjualan::whereBetween('created_at', [ date('Y').'-10-01 00:00:00', date('Y').'-11-01 00:00:00'])
+        ->sum('laba');
+        $laba_nov = Penjualan::whereBetween('created_at', [ date('Y').'-11-01 00:00:00', date('Y').'-12-01 00:00:00'])
+        ->sum('laba');
+        $laba_des = Penjualan::whereBetween('created_at', [ date('Y').'-12-01 00:00:00', date("Y",strtotime("+1 year")).'-01-01 00:00:00'])
+        ->sum('laba');
 
-        return view('general/dashboard')->with(['info' => $info, 'barang' => $barang]);
+$laba_tahunan= [$laba_jan, $laba_feb, $laba_mar, $laba_apr, $laba_mei, $laba_jun, $laba_jul, $laba_agus, $laba_sep, $laba_okt, $laba_nov, $laba_des];
+
+        return view('general/dashboard')->with(['info' => $info, 'barang' => $barang, 'laba' => $laba_tahunan]);
     }
     public function profile()
     {
