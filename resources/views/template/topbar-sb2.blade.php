@@ -63,7 +63,7 @@
                     Notification
                 </h6>
                 @if(count($barang) == 0)
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Selamat! anda tidak punya notifikasi</a>
+                    <a class="dropdown-item text-center small text-gray-500" href="#">Tidak ada notifikasi.</a>
                 @endif
                 @foreach($barang as $b)
                 <a class="dropdown-item d-flex align-items-center notif-hapus" href="#">
@@ -75,7 +75,7 @@
                     <div>
                         <input type="hidden" name="id_notif" id="id_notif" value="{{ $b->id }}">
                         <div class="small text-gray-500">{{ $b->updated_at }}</div>
-                        <span class="font-weight-bold"> Stok barang {{ $b->nama }} akan segera habis! segera restok barang anda (click saya untuk menghilangkan notif).</span>
+                        <span class="font-weight-bold"> Stok barang {{ $b->nama }} akan segera habis! segera restok barang anda.<small>(click saya untuk menghilangkan notif)</small></span>
                     </div>
                 </a>
                 @endforeach

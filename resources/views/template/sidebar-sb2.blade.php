@@ -56,7 +56,7 @@
                 <a class="collapse-item
                 @if(Route::is('transaksi'))
                 active
-                @endif" href="{{route('transaksi')}}">Keranjang</a>
+                @endif" href="{{route('transaksi')}}">Transaksi</a>
                 <a class="collapse-item
                 @if(Route::is('barang'))
                 active
