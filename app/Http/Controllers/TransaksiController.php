@@ -137,6 +137,8 @@ class TransaksiController extends Controller
     }
     public function cetakKeranjang()
     {
+        $info = Info::find('1')->first();
+        
         $keranjang = Transaksi::join('tbl_barang','tbl_barang.id','=','tbl_keranjang.id_barang')
         // join('tbl_keranjang.id_pegawai','=','tbl_pegawai.id')
                     ->get(['tbl_keranjang.jumlah as jumlah_keranjang','tbl_keranjang.total as total_keranjang','tbl_barang.nama as nama_barang']);
@@ -147,7 +149,7 @@ class TransaksiController extends Controller
         $total_harga = Transaksi::selectRaw('SUM(total) as total_harga')->get();
         $total_barang = Transaksi::selectRaw('SUM(jumlah) as total_barang')->get();
 
-        $pdf = PDF::loadView('pdf.keranjang', ['keranjangs' => $keranjang, 'tgl_pembelian' => $tgl_pembelian, 'kasir' => $kasir , 'total_harga' => $total_harga , 'total_barang' => $total_barang]);
+        $pdf = PDF::loadView('pdf.keranjang', ['keranjangs' => $keranjang, 'tgl_pembelian' => $tgl_pembelian, 'kasir' => $kasir , 'total_harga' => $total_harga , 'total_barang' => $total_barang,'info' => $info]);
         return $pdf->stream('Laporan-Data-Transaksi.pdf');
     }
     /**

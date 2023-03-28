@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2023 at 10:07 AM
+-- Generation Time: Mar 28, 2023 at 11:38 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -71,13 +71,13 @@ CREATE TABLE `tbl_barang` (
 
 INSERT INTO `tbl_barang` (`id`, `nama`, `img`, `jenis`, `supplier`, `modal`, `harga`, `jumlah`, `sisa`, `notif`, `created_at`, `updated_at`) VALUES
 (1, 'Shampo', NULL, 'Barang', 'blackmarket', 2500, 3500, 14, 296, 0, '2023-02-19 07:30:01', '2023-02-28 00:25:53'),
-(5, 'Shampoo', '1676909406.jpg', 'Barang', 'PT Jaya Utama Santikah', 2000, 3000, 2, 9, 0, '2023-02-20 09:10:06', '2023-03-09 05:49:42'),
-(6, 'v v', '1677038319.jpg', 'Barang', 'PT. Haecho Cell Beautque Manis', 231, 14, 312, 31, 0, '2023-02-20 09:42:54', '2023-02-21 20:58:39'),
-(13, 'sabun kancoli', '1677048665.jpg', 'Barang', 'PT Jaya Utama Santikah', 20200, 22000, 321, 399, 0, '2023-02-21 23:49:49', '2023-03-04 15:11:53'),
+(5, 'Shampoo', '1679892353.jpg', 'Barang', 'PT Jaya Utama Santikah', 2000, 3000, 2, 9, 0, '2023-02-20 09:10:06', '2023-03-26 21:45:53'),
+(6, 'v v', '1679892345.jpg', 'Barang', 'PT. Haecho Cell Beautque Manis', 231, 14, 312, 31, 0, '2023-02-20 09:42:54', '2023-03-26 21:45:45'),
+(13, 'sabun kancoli', '1679892338.jpg', 'Barang', 'PT Jaya Utama Santikah', 20200, 22000, 321, 399, 0, '2023-02-21 23:49:49', '2023-03-26 21:45:38'),
 (14, 'Keramas', '', 'Jasa', NULL, NULL, 10000, 9, NULL, 0, '2023-02-24 02:55:37', '2023-03-09 01:19:22'),
-(15, 'Keramas Laki', '', 'Jasa', NULL, NULL, 25000, 33, NULL, 0, '2023-02-25 03:47:35', '2023-03-04 11:49:09'),
-(16, '23asd', '1677956494.jpg', 'Barang', 'PT Anugerah Inovasi Sejahtera', 1000, 1500, 12, 188, 0, '2023-03-04 12:01:34', '2023-03-06 03:00:06'),
-(17, 'Masker Jeruk', '1678363364.jpg', 'Barang', 'PT Jaya Utama Santikah', 2000, 3000, 3, 6, 0, '2023-03-09 05:02:44', '2023-03-10 01:42:13');
+(15, 'Keramas Laki', '', 'Jasa', NULL, NULL, 25000, 53, NULL, 0, '2023-02-25 03:47:35', '2023-03-19 22:19:08'),
+(16, '23asd', '1679892329.jpg', 'Barang', 'PT Anugerah Inovasi Sejahtera', 1000, 1500, 12, 188, 0, '2023-03-04 12:01:34', '2023-03-26 21:45:29'),
+(17, 'Masker Jeruk', '1679892323.jpg', 'Barang', 'PT Jaya Utama Santikah', 2000, 3000, 4, 5, 1, '2023-03-09 05:02:44', '2023-03-26 21:45:23');
 
 -- --------------------------------------------------------
 
@@ -90,6 +90,7 @@ CREATE TABLE `tbl_info_web` (
   `nama_web` varchar(255) DEFAULT NULL,
   `icon_web` varchar(255) DEFAULT NULL,
   `loginscreen_web` varchar(255) DEFAULT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -98,8 +99,8 @@ CREATE TABLE `tbl_info_web` (
 -- Dumping data for table `tbl_info_web`
 --
 
-INSERT INTO `tbl_info_web` (`id`, `nama_web`, `icon_web`, `loginscreen_web`, `created_at`, `updated_at`) VALUES
-(1, 'Salon X', '1678345803.png', '1678345815.png', '2023-03-09 06:02:45', '2023-03-10 01:43:07');
+INSERT INTO `tbl_info_web` (`id`, `nama_web`, `icon_web`, `loginscreen_web`, `alamat`, `created_at`, `updated_at`) VALUES
+(1, 'Salon X', '1678345803.png', '1678345815.png', NULL, '2023-03-09 06:02:45', '2023-03-10 01:43:07');
 
 -- --------------------------------------------------------
 
@@ -123,7 +124,7 @@ CREATE TABLE `tbl_keranjang` (
 --
 
 INSERT INTO `tbl_keranjang` (`id`, `id_barang`, `id_pegawai`, `jumlah`, `total`, `keterangan`, `created_at`, `updated_at`) VALUES
-(1, 17, 1, 1, 3000, NULL, '2023-03-10 01:41:48', '2023-03-10 01:41:48');
+(1, 17, 1, 1, 3000, NULL, '2023-03-20 18:30:47', '2023-03-20 18:30:47');
 
 -- --------------------------------------------------------
 
@@ -188,7 +189,9 @@ INSERT INTO `tbl_penjualan` (`id`, `id_barang`, `jumlah`, `total_harga`, `laba`,
 (40, 5, 1, 3000, 1000, 2, NULL, '2023-03-09 01:38:00', '2023-03-09 01:38:00'),
 (41, 17, 1, 3000, 1000, 1, NULL, '2023-03-09 05:59:11', '2023-03-09 05:59:11'),
 (42, 17, 1, 3000, 1000, 1, NULL, '2023-03-09 09:14:13', '2023-03-09 09:14:13'),
-(43, 17, 1, 3000, 1000, 1, NULL, '2023-03-10 01:41:53', '2023-03-10 01:41:53');
+(43, 17, 1, 3000, 1000, 1, NULL, '2023-03-10 01:41:53', '2023-03-10 01:41:53'),
+(44, 15, 20, 500000, 500000, 1, 'borongan', '2023-03-19 22:19:08', '2023-03-19 22:19:08'),
+(45, 17, 1, 3000, 1000, 1, NULL, '2023-03-20 18:30:51', '2023-03-20 18:30:51');
 
 -- --------------------------------------------------------
 
@@ -246,7 +249,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `hp`, `alamat`, `img`, `email`, `username`, `level`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin1', NULL, NULL, '1678306870.png', 'admin1@gmail.com', 'admin1', '1', NULL, '$2y$10$0edxjJGvumtZYWzolNPJdOau3.8cdJE5ErCY0.ZQ8jo2K1PnqoaAS', 'j2dWfAwA3xSuyRbuuPLyNAI5plXYKa5FIrVd6AgSauR09d4JG9qo8VYYWUmW', '2023-03-07 08:01:34', '2023-03-08 22:11:31'),
+(1, 'admin1', NULL, NULL, '1679892375.jpg', 'admin1@gmail.com', 'admin1', '1', NULL, '$2y$10$0edxjJGvumtZYWzolNPJdOau3.8cdJE5ErCY0.ZQ8jo2K1PnqoaAS', 'MABGAXuPBRQCkDOrTBUGhRQKCI9wdJwPg13Blx3Bi92UvZpnr5zQA1DcPeKz', '2023-03-07 08:01:34', '2023-03-26 21:46:15'),
 (2, 'kasir 1', '+6285220120321', 'jl bandung', '', 'kasir1@gmail.com', 'kasir1', '2', NULL, '$2y$10$eRZTbTWvtxVPo7ZOiI79/ezwLNXfNfp/13QafQdJLiberHw9GcJXm', NULL, '2023-03-07 10:55:15', '2023-03-08 12:34:07');
 
 --
@@ -329,7 +332,7 @@ ALTER TABLE `tbl_keranjang`
 -- AUTO_INCREMENT for table `tbl_penjualan`
 --
 ALTER TABLE `tbl_penjualan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tbl_properti`
