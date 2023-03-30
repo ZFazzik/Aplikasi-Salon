@@ -135,13 +135,13 @@ class TransaksiController extends Controller
 
         return response()->json(['success' => 'Data keranjang telah dihapus!'], 200);
     }
-    public function cetakKeranjang()
+    public function cetakKeranjang($bayar, $kembalian)
     {
         $info = Info::find('1')->first();
         
         $keranjang = Transaksi::join('tbl_barang','tbl_barang.id','=','tbl_keranjang.id_barang')
         // join('tbl_keranjang.id_pegawai','=','tbl_pegawai.id')
-                    ->get(['tbl_keranjang.jumlah as jumlah_keranjang','tbl_keranjang.total as total_keranjang','tbl_barang.nama as nama_barang']);
+                    ->get(['tbl_keranjang.jumlah as jumlah_keranjang','tbl_keranjang.total as total_keranjang','tbl_barang.nama as nama_barang','tbl_barang.harga as harga_barang']);
         
         $tgl_pembelian = Transaksi::first('created_at');
         $kasir = Transaksi::first('id_pegawai');
@@ -149,8 +149,10 @@ class TransaksiController extends Controller
         $total_harga = Transaksi::selectRaw('SUM(total) as total_harga')->get();
         $total_barang = Transaksi::selectRaw('SUM(jumlah) as total_barang')->get();
 
-        $pdf = PDF::loadView('pdf.keranjang', ['keranjangs' => $keranjang, 'tgl_pembelian' => $tgl_pembelian, 'kasir' => $kasir , 'total_harga' => $total_harga , 'total_barang' => $total_barang,'info' => $info]);
-        return $pdf->stream('Laporan-Data-Transaksi.pdf');
+        $customPaper = array(0,0,567.00,283.80);
+
+        $pdf = PDF::loadView('pdf.keranjang', ['keranjangs' => $keranjang, 'tgl_pembelian' => $tgl_pembelian, 'kasir' => $kasir , 'total_harga' => $total_harga , 'total_barang' => $total_barang,'info' => $info, 'kembalian' => $kembalian, 'bayar' => $bayar])->setPaper($customPaper, 'landscape');
+        return $pdf->stream('Laporan-Data-Transaksi'. date('d-m-Y H_i_s') .'.pdf');
     }
     /**
      * Display the specified resource.

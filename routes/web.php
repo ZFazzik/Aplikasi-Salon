@@ -66,7 +66,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         
         Route::get('/save-penjualan', [TransaksiController::class, 'savePenjualan'])->name('save.penjualan');
         Route::get('/reset-keranjang', [TransaksiController::class, 'resetKeranjang'])->name('reset.keranjang');
-        Route::get('/cetak-keranjang', [TransaksiController::class, 'cetakKeranjang'])->name('cetak.keranjang');
+        Route::get('/cetak-keranjang/{bayar}/{kembalian}', [TransaksiController::class, 'cetakKeranjang'])->name('cetak.keranjang');
         Route::get('/cetak-penjualan/{dari}/{sampai}/{opsi}', [PenjualanController::class, 'cetakPenjualan'])->name('cetak.penjualan');
         Route::get('/cetak-barang/{dari}/{sampai}/{opsi}', [BarangController::class, 'cetakBarang'])->name('cetak.barang');
         Route::get('/cetak-pegawai/{dari}/{sampai}/{opsi}', [PegawaiController::class, 'cetakPegawai'])->name('cetak.pegawai');

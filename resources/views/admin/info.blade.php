@@ -55,11 +55,29 @@
         <input type="hidden" name="id" id="id" value="1" />
         <div class="row">
             <div class="col-sm-4">
-                <div class="form-group">
-                  <label for="">Nama Web</label>
-                  <input type="text"
-                    class="form-control" name="nama_web" id="" aria-describedby="helpId" placeholder=""  value="{{ $info->nama_web }}">
-                  <small id="helpId" class="form-text text-muted"></small>
+                <div class="row">
+                    <label for="">Nama Web</label>
+                    <input type="text"
+                        class="form-control" name="nama_web" id="" aria-describedby="helpId" placeholder=""  value="{{ $info->nama_web }}">
+                    <small id="helpId" class="form-text text-muted"></small>
+                </div>
+                <div class="row">
+                    <label for="">Cabang</label>
+                    <input type="text"
+                        class="form-control" name="cabang" id="" aria-describedby="helpId" placeholder=""  value="{{ $info->cabang }}">
+                    <small id="helpId" class="form-text text-muted"></small>
+                </div>
+                <div class="row">
+                    <label for="">Alamat</label>
+                    <input type="text"
+                        class="form-control" name="alamat" id="" aria-describedby="helpId" placeholder=""  value="{{ $info->alamat }}">
+                    <small id="helpId" class="form-text text-muted"></small>
+                </div>
+                <div class="row">
+                    <label for="">Sosial Media</label>
+                    <input type="text"
+                        class="form-control" name="sosmed" id="" aria-describedby="helpId" placeholder=""  value="{{ $info->sosmed }}">
+                    <small id="helpId" class="form-text text-muted"></small>
                 </div>
             </div>
             <div class="col-sm-4">

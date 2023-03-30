@@ -10,6 +10,6 @@ class Info extends Model
     use HasFactory;
     protected $table = 'tbl_info_web';
     protected $fillable = [
-        'id','nama_web','icon_web','loginscreen_web'
+        'id','nama_web','icon_web','loginscreen_web','alamat','sosmed','cabang'
     ];
 }

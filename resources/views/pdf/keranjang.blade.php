@@ -1,26 +1,63 @@
+<link href="{{public_path ('css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+<center>
+  <div class="sidebar-brand-icon">
+      <img src="{{public_path('/img/uploaded')}}/{{ $info->icon_web }}" style="width: 50px; background-color: rgba(0,0,0,.1)" class="img-thumbnail rounded" alt="">
+  </div>
+</center>
 
-<!-- <img src="{{asset('/img/uploaded')}}/{{ $info->icon_web }}"> -->
-<!-- {{asset('/img/uploaded')}}/{{ $info->icon_web }} -->
-  <h3><center>Data Keranjang</center></h3>
-  <center>{{ date('d F Y - H:i:s', $tgl_pembelian->created_at->timestamp) }}</center>
-  <table border="0" cellspacing="0" cellpadding="5">
+  <center>{{ $info->cabang }}</center>
+  <center>{{ $info->alamat }}</center>
+  <center>{{ $info->sosmed }}</center>
+  <!-- <center>{{ date('d F Y - H:i:s', $tgl_pembelian->created_at->timestamp) }}</center> -->
+  ================================</br>
+  <table>
     <tr>
-      <th>No.</th>
-      <th>Nama Barang</th>
-      <th>Jumlah</th>
-      <th>Total</th>
+      <td>Tanggal</td>
+      <td> :</td>
+      <td> {{ date('d F Y', $tgl_pembelian->created_at->timestamp) }}</td>
     </tr>
-    @foreach($keranjangs as $keranjang) 
     <tr>
-      <td>{{ $loop->iteration }}</td>
-      <td>{{$keranjang->nama_barang}}</td>
-      <td>{{$keranjang->jumlah_keranjang}}</td>
-      <td>{{$keranjang->total_keranjang}}</td>
+      <td>Jam</td>
+      <td> :</td>
+      <td> {{ date('H:i:s', $tgl_pembelian->created_at->timestamp) }}</td>
     </tr>
-    @endforeach
+    <tr>
+      <td>Kasir</td>
+      <td> :</td>
+      <td> {{ auth()->user()->name }}</td>
+    </tr>
   </table>
-  Total Harga: {{ $total_harga[0]->total_harga }} </br>
-  Total Unit: {{ $total_barang[0]->total_barang  }} </br>
-  Kasir: {{ auth()->user()->name }}
+  ================================</br>
+
+    @foreach($keranjangs as $keranjang) 
+      {{$keranjang->nama_barang}}</br><div class="float-right">{{$keranjang->total_keranjang}}</div>
+      {{$keranjang->jumlah_keranjang}} x @ {{$keranjang->harga_barang}}</br> 
+    @endforeach
+  </br>
+  <table align="right">
+    <tr>
+      <td>Bayar</td>
+      <td> :</td>
+      <td align="right"> {{ $bayar }}</td>
+    </tr>
+    <tr>
+      <td>Total Harga</td>
+      <td> :</td>
+      <td align="right"> {{ $total_harga[0]->total_harga }}</td>
+    </tr>
+    <tr>
+      <td>Kembali</td>
+      <td> :</td>
+      <td align="right"> {{ $kembalian }}</td>
+    </tr>
+    <tr>
+      <td>Total Unit</td>
+      <td> :</td>
+      <td align="right"> {{ $total_barang[0]->total_barang }}</td>
+    </tr>
+  </table>
   
+    ================================</br>
+  <center>Terima Kasih</center>
+  <center>Selamat Datang Kembali</center>

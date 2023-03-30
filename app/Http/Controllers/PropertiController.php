@@ -118,7 +118,9 @@ class PropertiController extends Controller
         return response()->json($findType);
     }
     public function findBarang($jenis){
-        $findBarang = Barang::where('jenis',$jenis)->get();
+        $findBarang = Barang::where('jenis',$jenis)
+        ->where('sisa','!=',0)
+        ->get();
         
         return response()->json($findBarang);
     }

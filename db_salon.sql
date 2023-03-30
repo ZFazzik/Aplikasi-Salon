@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2023 at 11:38 PM
+-- Generation Time: Mar 30, 2023 at 11:07 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -70,14 +70,15 @@ CREATE TABLE `tbl_barang` (
 --
 
 INSERT INTO `tbl_barang` (`id`, `nama`, `img`, `jenis`, `supplier`, `modal`, `harga`, `jumlah`, `sisa`, `notif`, `created_at`, `updated_at`) VALUES
-(1, 'Shampo', NULL, 'Barang', 'blackmarket', 2500, 3500, 14, 296, 0, '2023-02-19 07:30:01', '2023-02-28 00:25:53'),
-(5, 'Shampoo', '1679892353.jpg', 'Barang', 'PT Jaya Utama Santikah', 2000, 3000, 2, 9, 0, '2023-02-20 09:10:06', '2023-03-26 21:45:53'),
+(1, 'Shampo', NULL, 'Barang', 'blackmarket', 2500, 3500, 18, 292, 0, '2023-02-19 07:30:01', '2023-03-30 01:55:42'),
+(5, 'Shampoo', '1679892353.jpg', 'Barang', 'PT Jaya Utama Santikah', 2000, 3000, 6, 5, 1, '2023-02-20 09:10:06', '2023-03-30 01:55:42'),
 (6, 'v v', '1679892345.jpg', 'Barang', 'PT. Haecho Cell Beautque Manis', 231, 14, 312, 31, 0, '2023-02-20 09:42:54', '2023-03-26 21:45:45'),
-(13, 'sabun kancoli', '1679892338.jpg', 'Barang', 'PT Jaya Utama Santikah', 20200, 22000, 321, 399, 0, '2023-02-21 23:49:49', '2023-03-26 21:45:38'),
-(14, 'Keramas', '', 'Jasa', NULL, NULL, 10000, 9, NULL, 0, '2023-02-24 02:55:37', '2023-03-09 01:19:22'),
-(15, 'Keramas Laki', '', 'Jasa', NULL, NULL, 25000, 53, NULL, 0, '2023-02-25 03:47:35', '2023-03-19 22:19:08'),
-(16, '23asd', '1679892329.jpg', 'Barang', 'PT Anugerah Inovasi Sejahtera', 1000, 1500, 12, 188, 0, '2023-03-04 12:01:34', '2023-03-26 21:45:29'),
-(17, 'Masker Jeruk', '1679892323.jpg', 'Barang', 'PT Jaya Utama Santikah', 2000, 3000, 4, 5, 1, '2023-03-09 05:02:44', '2023-03-26 21:45:23');
+(13, 'sabun kan', '1679892338.jpg', 'Barang', 'PT Jaya Utama Santikah', 20200, 22000, 329, 391, 0, '2023-02-21 23:49:49', '2023-03-30 01:55:42'),
+(14, 'Keramas', '', 'Jasa', NULL, NULL, 10000, 13, NULL, 0, '2023-02-24 02:55:37', '2023-03-30 01:55:42'),
+(15, 'Keramas Laki', '', 'Jasa', NULL, NULL, 25000, 57, NULL, 0, '2023-02-25 03:47:35', '2023-03-30 01:55:42'),
+(16, '23asd', '1679892329.jpg', 'Barang', 'PT Anugerah Inovasi Sejahtera', 1000, 1500, 20, 180, 0, '2023-03-04 12:01:34', '2023-03-30 01:55:42'),
+(17, 'Masker Jeruk', '1679892323.jpg', 'Barang', 'PT Jaya Utama Santikah', 2000, 3000, 9, 10, 1, '2023-03-09 05:02:44', '2023-03-30 01:58:31'),
+(18, 'Bando', '', 'Barang', 'PT Jaya Utama Santikah', 5000, 5500, 1, 0, 1, '2023-03-30 01:43:57', '2023-03-30 01:55:43');
 
 -- --------------------------------------------------------
 
@@ -91,6 +92,8 @@ CREATE TABLE `tbl_info_web` (
   `icon_web` varchar(255) DEFAULT NULL,
   `loginscreen_web` varchar(255) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL,
+  `sosmed` varchar(255) DEFAULT NULL,
+  `cabang` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -99,8 +102,8 @@ CREATE TABLE `tbl_info_web` (
 -- Dumping data for table `tbl_info_web`
 --
 
-INSERT INTO `tbl_info_web` (`id`, `nama_web`, `icon_web`, `loginscreen_web`, `alamat`, `created_at`, `updated_at`) VALUES
-(1, 'Salon X', '1678345803.png', '1678345815.png', NULL, '2023-03-09 06:02:45', '2023-03-10 01:43:07');
+INSERT INTO `tbl_info_web` (`id`, `nama_web`, `icon_web`, `loginscreen_web`, `alamat`, `sosmed`, `cabang`, `created_at`, `updated_at`) VALUES
+(1, 'Salon X', '1678345803.png', '1678345815.png', 'Jl. Bandung No. 99', 'IG: @salon_x', 'Bandung Gatsu', '2023-03-09 06:02:45', '2023-03-30 01:08:46');
 
 -- --------------------------------------------------------
 
@@ -124,7 +127,15 @@ CREATE TABLE `tbl_keranjang` (
 --
 
 INSERT INTO `tbl_keranjang` (`id`, `id_barang`, `id_pegawai`, `jumlah`, `total`, `keterangan`, `created_at`, `updated_at`) VALUES
-(1, 17, 1, 1, 3000, NULL, '2023-03-20 18:30:47', '2023-03-20 18:30:47');
+(1, 17, 1, 1, 3000, NULL, '2023-03-29 23:07:08', '2023-03-29 23:07:08'),
+(2, 15, 1, 1, 25000, NULL, '2023-03-29 23:24:57', '2023-03-29 23:24:57'),
+(3, 5, 1, 1, 3000, NULL, '2023-03-29 23:25:18', '2023-03-29 23:25:18'),
+(4, 13, 1, 2, 44000, NULL, '2023-03-29 23:34:30', '2023-03-29 23:34:30'),
+(5, 14, 1, 1, 10000, NULL, '2023-03-30 00:03:45', '2023-03-30 00:03:45'),
+(6, 16, 1, 1, 1500, NULL, '2023-03-30 00:53:01', '2023-03-30 00:53:01'),
+(7, 1, 1, 1, 3500, NULL, '2023-03-30 00:53:13', '2023-03-30 00:53:13'),
+(8, 16, 1, 1, 1500, NULL, '2023-03-30 00:53:29', '2023-03-30 00:53:29'),
+(9, 18, 1, 1, 5500, NULL, '2023-03-30 01:55:36', '2023-03-30 01:55:36');
 
 -- --------------------------------------------------------
 
@@ -191,7 +202,41 @@ INSERT INTO `tbl_penjualan` (`id`, `id_barang`, `jumlah`, `total_harga`, `laba`,
 (42, 17, 1, 3000, 1000, 1, NULL, '2023-03-09 09:14:13', '2023-03-09 09:14:13'),
 (43, 17, 1, 3000, 1000, 1, NULL, '2023-03-10 01:41:53', '2023-03-10 01:41:53'),
 (44, 15, 20, 500000, 500000, 1, 'borongan', '2023-03-19 22:19:08', '2023-03-19 22:19:08'),
-(45, 17, 1, 3000, 1000, 1, NULL, '2023-03-20 18:30:51', '2023-03-20 18:30:51');
+(45, 17, 1, 3000, 1000, 1, NULL, '2023-03-20 18:30:51', '2023-03-20 18:30:51'),
+(46, 17, 1, 3000, 1000, 1, NULL, '2023-03-29 23:07:13', '2023-03-29 23:07:13'),
+(47, 17, 1, 3000, 1000, 1, NULL, '2023-03-30 00:53:39', '2023-03-30 00:53:39'),
+(48, 15, 1, 25000, 25000, 1, NULL, '2023-03-30 00:53:39', '2023-03-30 00:53:39'),
+(49, 5, 1, 3000, 1000, 1, NULL, '2023-03-30 00:53:39', '2023-03-30 00:53:39'),
+(50, 13, 2, 44000, 3600, 1, NULL, '2023-03-30 00:53:39', '2023-03-30 00:53:39'),
+(51, 14, 1, 10000, 10000, 1, NULL, '2023-03-30 00:53:39', '2023-03-30 00:53:39'),
+(52, 16, 1, 1500, 500, 1, NULL, '2023-03-30 00:53:39', '2023-03-30 00:53:39'),
+(53, 1, 1, 3500, 1000, 1, NULL, '2023-03-30 00:53:40', '2023-03-30 00:53:40'),
+(54, 16, 1, 1500, 500, 1, NULL, '2023-03-30 00:53:40', '2023-03-30 00:53:40'),
+(55, 17, 1, 3000, 1000, 1, NULL, '2023-03-30 01:32:12', '2023-03-30 01:32:12'),
+(56, 15, 1, 25000, 25000, 1, NULL, '2023-03-30 01:32:14', '2023-03-30 01:32:14'),
+(57, 5, 1, 3000, 1000, 1, NULL, '2023-03-30 01:32:16', '2023-03-30 01:32:16'),
+(58, 13, 2, 44000, 3600, 1, NULL, '2023-03-30 01:32:20', '2023-03-30 01:32:20'),
+(59, 14, 1, 10000, 10000, 1, NULL, '2023-03-30 01:32:21', '2023-03-30 01:32:21'),
+(60, 16, 1, 1500, 500, 1, NULL, '2023-03-30 01:32:21', '2023-03-30 01:32:21'),
+(61, 1, 1, 3500, 1000, 1, NULL, '2023-03-30 01:32:22', '2023-03-30 01:32:22'),
+(62, 16, 1, 1500, 500, 1, NULL, '2023-03-30 01:32:22', '2023-03-30 01:32:22'),
+(63, 17, 1, 3000, 1000, 1, NULL, '2023-03-30 01:32:35', '2023-03-30 01:32:35'),
+(64, 15, 1, 25000, 25000, 1, NULL, '2023-03-30 01:32:35', '2023-03-30 01:32:35'),
+(65, 5, 1, 3000, 1000, 1, NULL, '2023-03-30 01:32:35', '2023-03-30 01:32:35'),
+(66, 13, 2, 44000, 3600, 1, NULL, '2023-03-30 01:32:35', '2023-03-30 01:32:35'),
+(67, 14, 1, 10000, 10000, 1, NULL, '2023-03-30 01:32:35', '2023-03-30 01:32:35'),
+(68, 16, 1, 1500, 500, 1, NULL, '2023-03-30 01:32:35', '2023-03-30 01:32:35'),
+(69, 1, 1, 3500, 1000, 1, NULL, '2023-03-30 01:32:35', '2023-03-30 01:32:35'),
+(70, 16, 1, 1500, 500, 1, NULL, '2023-03-30 01:32:36', '2023-03-30 01:32:36'),
+(71, 17, 1, 3000, 1000, 1, NULL, '2023-03-30 01:55:42', '2023-03-30 01:55:42'),
+(72, 15, 1, 25000, 25000, 1, NULL, '2023-03-30 01:55:42', '2023-03-30 01:55:42'),
+(73, 5, 1, 3000, 1000, 1, NULL, '2023-03-30 01:55:42', '2023-03-30 01:55:42'),
+(74, 13, 2, 44000, 3600, 1, NULL, '2023-03-30 01:55:42', '2023-03-30 01:55:42'),
+(75, 14, 1, 10000, 10000, 1, NULL, '2023-03-30 01:55:42', '2023-03-30 01:55:42'),
+(76, 16, 1, 1500, 500, 1, NULL, '2023-03-30 01:55:42', '2023-03-30 01:55:42'),
+(77, 1, 1, 3500, 1000, 1, NULL, '2023-03-30 01:55:42', '2023-03-30 01:55:42'),
+(78, 16, 1, 1500, 500, 1, NULL, '2023-03-30 01:55:42', '2023-03-30 01:55:42'),
+(79, 18, 1, 5500, 500, 1, NULL, '2023-03-30 01:55:43', '2023-03-30 01:55:43');
 
 -- --------------------------------------------------------
 
@@ -249,8 +294,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `hp`, `alamat`, `img`, `email`, `username`, `level`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin1', NULL, NULL, '1679892375.jpg', 'admin1@gmail.com', 'admin1', '1', NULL, '$2y$10$0edxjJGvumtZYWzolNPJdOau3.8cdJE5ErCY0.ZQ8jo2K1PnqoaAS', 'MABGAXuPBRQCkDOrTBUGhRQKCI9wdJwPg13Blx3Bi92UvZpnr5zQA1DcPeKz', '2023-03-07 08:01:34', '2023-03-26 21:46:15'),
-(2, 'kasir 1', '+6285220120321', 'jl bandung', '', 'kasir1@gmail.com', 'kasir1', '2', NULL, '$2y$10$eRZTbTWvtxVPo7ZOiI79/ezwLNXfNfp/13QafQdJLiberHw9GcJXm', NULL, '2023-03-07 10:55:15', '2023-03-08 12:34:07');
+(1, 'admin1', NULL, NULL, '1679892375.jpg', 'admin1@gmail.com', 'admin1', '1', NULL, '$2y$10$0edxjJGvumtZYWzolNPJdOau3.8cdJE5ErCY0.ZQ8jo2K1PnqoaAS', 'IgRM9TsOIYyOji8NgHM8AnsPnEyAwBVPvmMMlpxVpHivPrWmBLJ0sBz78nHl', '2023-03-07 08:01:34', '2023-03-26 21:46:15'),
+(2, 'kasir shift 1', '+6285220120321', 'jl bandung', '', 'kasir1@gmail.com', 'kasir1', '2', NULL, '$2y$10$eRZTbTWvtxVPo7ZOiI79/ezwLNXfNfp/13QafQdJLiberHw9GcJXm', NULL, '2023-03-07 10:55:15', '2023-03-29 02:18:31');
 
 --
 -- Indexes for dumped tables
@@ -314,7 +359,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `tbl_barang`
 --
 ALTER TABLE `tbl_barang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tbl_info_web`
@@ -326,13 +371,13 @@ ALTER TABLE `tbl_info_web`
 -- AUTO_INCREMENT for table `tbl_keranjang`
 --
 ALTER TABLE `tbl_keranjang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_penjualan`
 --
 ALTER TABLE `tbl_penjualan`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `tbl_properti`

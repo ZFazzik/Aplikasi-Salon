@@ -76,7 +76,7 @@
                 </div>
                 <div class="col-sm-6">
                     <a name="" id="" class="btn btn-success btnBayar" href="#" role="button"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></a>
-                    <a name="" id="" class="btn btn-primary btnPrint" href="{{route('cetak.keranjang')}}" role="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
+                    <a name="" id="" class="btn btn-primary btnPrint" href="#" role="button" target="_blank"><i class="fa fa-print" aria-hidden="true"></i></a>
                     <a name="" id="" class="btn btn-danger btnReset" href="#" role="button"><i class="fa fa-recycle" aria-hidden="true"></i></a>
                     
                 </div>
@@ -544,7 +544,6 @@
                             }else if(kembalian > 0){
                                 alert('Pelangganmu sudah membayar. Jangan lupa untuk mereset keranjang dan berikan kembalian '+ kembalian +' kepada pelanggan.'); 
                             }
-                            $(window).attr('location',"{{ route('transaksi') }}");
                         },
                         error: function(data){
                             console.log('error: ',data);
@@ -557,7 +556,23 @@
 
             });
             $(document).on('click','.btnPrint', function (e) {
-            //    e.preventDefault();
+                e.preventDefault(); 
+                var bayar = $('#bayar').val();
+                var kembalian = $('#kembalian_hide').val();
+                var url = "{{route('cetak.keranjang', [':bayar',':kembalian'] )}}"; 
+
+                url = url.replace(':bayar', bayar);
+                url = url.replace(':kembalian', kembalian);
+
+                if(kembalian < 0){
+                    alert('Pelangganmu kurang bayar '+ kembalian + '.');
+                }else if(kembalian === '' || kembalian === null){
+                    alert('Anda belum memasukan kolom bayar.');
+                }else{
+                    window.open(url, '_blank');
+                }
+                
+                
             });
             $(document).on('click','.btnReset', function (e) {
                e.preventDefault();
@@ -571,6 +586,7 @@
                         $('#total_bayar').val(''); 
                         $('#bayar').val(''); 
                         $('#kembalian').val(''); 
+                        $(window).attr('location',"{{ route('transaksi') }}");
                     },
                     error: function(data){
                         console.log('error: ',data);

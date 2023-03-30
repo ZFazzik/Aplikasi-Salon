@@ -37,6 +37,9 @@ class InfoController extends Controller
     {
         $info = Info::find($request->id)->first();
         $nama_web = $request->nama_web;
+        $alamat = $request->alamat;
+        $sosmed = $request->sosmed;
+        $cabang = $request->cabang;
         if($request->file('img') && $request->file('img_loginscreen')){
             $this->validate($request, [
                 'img' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -82,6 +85,9 @@ class InfoController extends Controller
 
     $info = Info::find($request->id)->update([
         'nama_web' => $nama_web,
+        'alamat' => $alamat,
+        'sosmed' => $sosmed,
+        'cabang' => $cabang,
         'icon_web' => $img,
         'loginscreen_web' => $img2,
     ]);
