@@ -53,7 +53,7 @@
 				<td class="text-center">{{$b->harga}}</td>
 				<td class="text-center">{{$b->jumlah}}</td>
 				<td class="text-center">{{$b->sisa}}</td>
-				<td class="text-center">{{ date('d F Y - H:i:s', strtotime($b->created_at)) }}</td>
+				<td class="text-center">{{ date('d F Y', strtotime($b->created_at)) }}</td>
 			</tr>
 			@endforeach
 		</tbody>
