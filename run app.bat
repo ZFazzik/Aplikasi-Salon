@@ -1,6 +1,6 @@
 @echo OFF
 :: CD without any parameters displays the current working directory
-
+:: jangan lupa hidupin php gd di php.ini
 :: base = cd "C:\xampp"
 
 if exist D:\Proj\xampp\xampp-control.exe (
