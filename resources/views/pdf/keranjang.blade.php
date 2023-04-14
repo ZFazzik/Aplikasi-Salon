@@ -13,14 +13,15 @@
   ================================</br>
   <table>
     <tr>
+      {{date_default_timezone_set("Asia/Bangkok")}}
       <td>Tanggal</td>
       <td> :</td>
-      <td> {{ date('d F Y', $tgl_pembelian->created_at->timestamp) }}</td>
+      <td> {{ date('d F Y') }}</td>
     </tr>
     <tr>
       <td>Jam</td>
       <td> :</td>
-      <td> {{ date('H:i:s', $tgl_pembelian->created_at->timestamp) }}</td>
+      <td> {{ date('H:i:s') }}</td>
     </tr>
     <tr>
       <td>Kasir</td>
