@@ -136,7 +136,7 @@
                             </div>
                         </div>
                         
-                        <input type="hidden" name="id_pegawai" id="id_pegawai" value="{{ auth()->user()->id }}">
+                        <input type="hidden" name="nama_pegawai" id="nama_pegawai" value="{{ auth()->user()->name }}">
 
                         <div class="row">
                             <div class="col-sm-3">
@@ -422,7 +422,7 @@
                 var type = $(this).val();
                 $.get("{{route('find-type','Jenis')}}",function(datas){
                     $('#jenis').empty()
-                        .append('<option readonly selected value> -- Pilih Jenis Data -- </option>');
+                        .append('<option readonly selected value=""> -- Pilih Jenis Data -- </option>');
 
                     $.each(datas, function (i, data) {
                         $('#jenis').append($('<option>', { 
@@ -437,12 +437,12 @@
                 e.preventDefault();
                 var type = $(this).val();
                 $('.class-nama').html('Nama '+ type);
-                if(type == null){
+                if(type == "" || type == null){
                     $('#id_barang').empty()
-                        .append('<option readonly selected value> -- Silahkan pilih Jenis -- </option>');
+                        .append('<option readonly selected value=""> -- Silahkan pilih Jenis -- </option>');
                 }else{
                     $('#id_barang').empty()
-                        .append('<option readonly selected value> -- Pilih Nama '+ type +'-- </option>');
+                        .append('<option readonly selected value=""> -- Pilih Nama '+ type +' -- </option>');
                 }
 
             });
@@ -456,13 +456,13 @@
                 $.get(url,function(datas){
                     if(type == 'Jasa'){
                         $('#id_barang').empty()
-                            .append('<option readonly selected value> -- Pilih Nama Jasa -- </option>');
+                            .append('<option readonly selected value="0"> -- Pilih Nama Jasa -- </option>');
                     }else if(type == 'Barang'){
                         $('#id_barang').empty()
-                            .append('<option readonly selected value> -- Pilih Nama Barang -- </option>');
+                            .append('<option readonly selected value="0"> -- Pilih Nama Barang -- </option>');
                     }else{
                         $('#id_barang').empty()
-                            .append('<option readonly selected value> -- Silahkan pilih Jenis -- </option>');
+                            .append('<option readonly selected value="0"> -- Silahkan pilih Jenis -- </option>');
                     }
                     $.each(datas, function (i, data) {
                         

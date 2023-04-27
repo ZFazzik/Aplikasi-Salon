@@ -88,14 +88,20 @@ class TransaksiController extends Controller
         foreach($allTransaksi as $transaksi){
             $id_barang = $transaksi->id_barang;
             $jumlah = $transaksi->jumlah;
-            $total = $transaksi->total;
-            $id_pegawai = $transaksi->id_pegawai;
+            $total_harga = $transaksi->total;
+            $nama_pegawai = $transaksi->nama_pegawai;
             $deskripsi = $transaksi->keterangan;
 
             $findBarang = Barang::find($id_barang);
+            $nama_barang = $findBarang->nama;
+            $img = $findBarang->img;
+            $jenis = $findBarang->jenis;
+            $supplier = $findBarang->supplier;
             $modal = $findBarang->modal;
+            $harga_satuan = $findBarang->harga;
+
             $sisa = $findBarang->sisa;
-            $laba = $total - ($modal*$jumlah);
+            $laba = $total_harga - ($modal*$jumlah);
             $jumlahTerjual = $findBarang->jumlah + $jumlah;
 
             if($findBarang->jenis == 'Barang'){
@@ -116,11 +122,16 @@ class TransaksiController extends Controller
             }
 
             Penjualan::Create([
-                'id_barang' => $id_barang,
+                'nama_barang' => $nama_barang,
+                'img' => $img,
+                'jenis' => $jenis,
+                'supplier' => $supplier,
+                'modal' => $modal,
+                'harga_satuan' => $harga_satuan,
                 'jumlah' => $jumlah,
-                'total_harga' => $total,
+                'total_harga' => $total_harga,
                 'laba' => $laba,
-                'id_pegawai' => $id_pegawai,
+                'nama_pegawai' => $nama_pegawai,
                 'deskripsi' => $deskripsi,
             ]);
         }
@@ -144,7 +155,7 @@ class TransaksiController extends Controller
                     ->get(['tbl_keranjang.jumlah as jumlah_keranjang','tbl_keranjang.total as total_keranjang','tbl_barang.nama as nama_barang','tbl_barang.harga as harga_barang']);
         
         $tgl_pembelian = Transaksi::first('created_at');
-        $kasir = Transaksi::first('id_pegawai');
+        $kasir = Transaksi::where('nama_pegawai','=',auth()->user()->name)->first();
 
         $total_harga = Transaksi::selectRaw('SUM(total) as total_harga')->get();
         $total_barang = Transaksi::selectRaw('SUM(jumlah) as total_barang')->get();

@@ -38,7 +38,7 @@
 				<td>{{$p->total_harga}}</td>
 				<td>{{$p->laba}}</td>
 				<td>{{$p->nama_pegawai}}</td>
-				<td>{{ date('d F Y', strtotime($p->tanggal)) }}</td>
+				<td>{{ date('d F Y', strtotime($p->created_at)) }}</td>
 			</tr>
 			@endforeach
 		</tbody>

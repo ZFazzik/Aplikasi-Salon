@@ -72,9 +72,6 @@ class PropertiController extends Controller
             return response()->json(['success' => 'Data Properti Telah Diedit!'], 200);
         }
 
-        
-
-
     }
 
     /**
@@ -118,9 +115,14 @@ class PropertiController extends Controller
         return response()->json($findType);
     }
     public function findBarang($jenis){
-        $findBarang = Barang::where('jenis',$jenis)
-        ->where('sisa','!=',0)
-        ->get();
+        if($jenis == 'Barang'){
+            $findBarang = Barang::where('jenis',$jenis)
+            ->where('sisa','!=',0)
+            ->get();
+        }else{
+            $findBarang = Barang::where('jenis',$jenis)
+            ->get();
+        }
         
         return response()->json($findBarang);
     }

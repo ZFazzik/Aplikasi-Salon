@@ -280,7 +280,7 @@
                 ajax: "{{route ('ajax-penjualan.index')}}",
                 columns: [
                     {data: 'DT_RowIndex', name: 'DT_RowIndex', "width": 20,className: "dt-center"},
-                    {data: 'nama', name:'nama'},
+                    {data: 'nama_barang', name:'nama'},
                     {data: 'jumlah', name:'jumlah'},
                     {data: 'total_harga', name:'total_harga'},
                     {data: 'laba', name:'laba'},
@@ -314,27 +314,27 @@
                 url = url.replace(':id', id)
 
                 $.get(url,function(data){
-                    var tanggal_base = data.dataPenjualan.created_at;
+                    var tanggal_base = data.penjualan.created_at;
                     var tanggal = tanggal_base.slice(0,10);
                     var NoImg = "{{asset('/img/No_image_available.png')}}";
-                    var Img = "{{asset('/img/uploaded')}}" +'/'+ data.dataBarang.img;
+                    var Img = "{{asset('/img/uploaded')}}" +'/'+ data.penjualan.img;
 
-                    if(data.dataBarang.img == null || data.dataBarang.img == ''){
+                    if(data.penjualan.img == null || data.penjualan.img == ''){
                         $('#imgDetail').html("<img src='"+ NoImg +"' class='img-thumbnail rounded-top' alt=''>");
                     }else{
                         $('#imgDetail').html("<img src='"+ Img +"' class='img-thumbnail rounded-top' alt=''>");
                     }
                     
-                    $('.modal-title').html('Detail: '+data.dataBarang.nama);
-                    $('#jenisDetail').html(data.dataBarang.jenis);
-                    $('#supplierDetail').html(data.dataBarang.supplier);
-                    $('#modalDetail').html(data.dataBarang.modal);
-                    $('#hargaSatuanDetail').html(data.dataBarang.harga);
-                    $('#jumlahDetail').html(data.dataPenjualan.jumlah);
-                    $('#totalDetail').html(data.dataPenjualan.total_harga);
-                    $('#labaDetail').html(data.dataPenjualan.laba);
-                    $('#ketDetail').html(data.dataPenjualan.deskripsi);
-                    $('#pegawaiDetail').html(data.dataPegawai.name);
+                    $('.modal-title').html('Detail: '+data.penjualan.nama_barang);
+                    $('#jenisDetail').html(data.penjualan.jenis);
+                    $('#supplierDetail').html(data.penjualan.supplier);
+                    $('#modalDetail').html(data.penjualan.modal);
+                    $('#hargaSatuanDetail').html(data.penjualan.harga_satuan);
+                    $('#jumlahDetail').html(data.penjualan.jumlah);
+                    $('#totalDetail').html(data.penjualan.total_harga);
+                    $('#labaDetail').html(data.penjualan.laba);
+                    $('#ketDetail').html(data.penjualan.deskripsi);
+                    $('#pegawaiDetail').html(data.penjualan.nama_pegawai);
                     $('#tanggalDetail').html(tanggal);
                 });
 

@@ -23,18 +23,12 @@ class PenjualanController extends Controller
         $data = Penjualan::latest()->get();
         return DataTables::of($data)
         ->addIndexColumn()
-        ->addColumn('nama',function ($row){
-            $dataBarang = Barang::find($row->id_barang);
-            // $dataBarang->nama;
-
-            return $dataBarang->nama;
-        })
         ->addColumn('action',function ($row){
             $btn = '<a href="javascript:void(0)" data-toggle="modal" data-target="#modelId" data-id="'.$row->id.'" data-original-title="Edit" class="btn btn-success btn-sm detailPenjualan">Detail</a>';
 
             return $btn;
         })
-        ->rawColumns(['nama','action'])
+        ->rawColumns(['action'])
         ->make(true);
     }
 
@@ -50,13 +44,9 @@ class PenjualanController extends Controller
     public function detailPenjualan($id)
     {
         $penjualan = Penjualan::find($id);
-        $pegawai = User::find($penjualan->id_pegawai);
-        $barang = Barang::find($penjualan->id_barang);
 
         return response()->json(array(
-            'dataPenjualan' => $penjualan,
-            'dataBarang' => $barang,
-            'dataPegawai' => $pegawai,
+            'penjualan' => $penjualan,
         ));
     }
     public function cetakPenjualan($dari, $sampai, $opsi)
@@ -70,16 +60,8 @@ class PenjualanController extends Controller
             $waktu_sampai = ' 00:00:00';
         }
         
-        $penjualan = Penjualan::join('tbl_barang','tbl_barang.id','=','tbl_penjualan.id_barang')
-        ->join('users','users.id','=','tbl_penjualan.id_pegawai')
-        ->whereBetween('tbl_penjualan.created_at', [$dari.$waktu_dari, $sampai . $waktu_sampai])
-        ->get(['tbl_barang.nama as nama_barang',
-        'tbl_penjualan.jumlah as jumlah',
-        'tbl_penjualan.total_harga as total_harga',
-        'tbl_penjualan.laba as laba',
-        'users.name as nama_pegawai',
-        'tbl_penjualan.deskripsi as deskripsi',
-        'tbl_penjualan.created_at as tanggal']);
+        $penjualan = Penjualan::whereBetween('tbl_penjualan.created_at', [$dari.$waktu_dari, $sampai . $waktu_sampai])
+        ->get();
 
         $laba = Penjualan::whereBetween('created_at', [$dari.$waktu_dari, $sampai . $waktu_sampai])
         ->sum('laba');
