@@ -62,6 +62,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         
         Route::delete('/hapus-img/{id}/barang', [BarangController::class, 'destroyImg'])->name('hapus-img.barang');
         Route::delete('/hapus-img/{id}/pegawai', [PegawaiController::class, 'destroyImg'])->name('hapus-img.pegawai');
+        Route::delete('/hapus-img/{id}/icon', [InfoController::class, 'destroyImgIcon'])->name('hapus-img.icon');
+        Route::delete('/hapus-img/{id}/login', [InfoController::class, 'destroyImgLogin'])->name('hapus-img.login');        
         Route::delete('/hapus-notif/{id}/barang', [BarangController::class, 'destroyNotif'])->name('hapus-notif.barang');
         
         Route::get('/save-penjualan', [TransaksiController::class, 'savePenjualan'])->name('save.penjualan');

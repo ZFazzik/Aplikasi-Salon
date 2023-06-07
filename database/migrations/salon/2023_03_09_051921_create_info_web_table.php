@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('nama_web')->nullable();
             $table->string('icon_web')->nullable();
             $table->string('loginscreen_web')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('sosmed')->nullable();
             $table->timestamps();
         });
     }

@@ -11,6 +11,11 @@
 
     <title>{{ $info->nama_web }} - Login</title>
 
+    @if($info->icon_web == '' || $info->icon_web == null)
+    <link rel="icon" type="image/x-icon" href="{{asset('/img/No_image_available.png')}}">
+    @else
+    <link rel="icon" type="image/x-icon" href="{{asset('/img/uploaded')}}/{{ $info->icon_web }}">
+    @endif
     <!-- Custom fonts for this template-->
     <link href="{{asset ('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link
@@ -37,7 +42,7 @@
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image">
                             @if($info->loginscreen_web != '' || $info->loginscreen_web != null)
-                                <img src="{{asset('/img/uploaded')}}/{{ $info->icon_web }}" class="img-thumbnail ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+                                <img src="{{asset('/img/uploaded')}}/{{ $info->loginscreen_web }}" class="img-thumbnail ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
                             @endif
                             </div>
                             <div class="col-lg-6">

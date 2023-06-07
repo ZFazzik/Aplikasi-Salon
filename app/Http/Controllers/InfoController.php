@@ -95,6 +95,36 @@ class InfoController extends Controller
     return redirect()->route('info')->with('success', "Info Web sudah diubah.");
     }
 
+    public function destroyImgIcon($id)
+    {
+        $icon = Info::find($id); //make find()->delete() udah cukup tanpa image atau file
+        
+        $icon_gambar = $pegawai->icon_web;
+
+        $img_path = public_path('img/uploaded/').$icon_gambar;
+        
+        File::delete($img_path);
+        $icon->icon_web='';
+        $icon->save();
+        
+        return response()->json(['success'=> 'Deleted image']);
+                
+    }
+    public function destroyImgLogin($id)
+    {
+        $login = Info::find($id); //make find()->delete() udah cukup tanpa image atau file
+        
+        $login_gambar = $login->loginscreen_web;
+
+        $img_path = public_path('img/uploaded/').$login_gambar;
+        
+        File::delete($img_path);
+        $login->loginscreen_web='';
+        $login->save();
+        
+        return response()->json(['success'=> 'Deleted image']);
+                
+    }
     public function create()
     {
         //

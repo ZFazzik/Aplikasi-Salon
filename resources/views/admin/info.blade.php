@@ -110,7 +110,7 @@
                     <img src="{{asset('/img/uploaded')}}/{{ $info->loginscreen_web }}" class="img-thumbnail ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
                   @endif
                   <div class="row d-flex justify-content-center">
-                    <button type="button" class="btn btn-danger hapus-img" data-dismiss="modal">Hapus Gambar</button>
+                    <button type="button" class="btn btn-danger hapus-img2" data-dismiss="modal">Hapus Gambar</button>
                   </div>
                 </div>
             </div>
@@ -144,8 +144,8 @@ $(function(){
 
     $(document).on('click','.hapus-img', function (e) {
         var id = $('#id').val();
-        var textConfirm = "Apakah kamu yakin menghapus foto profil?";
-        let url = "{{route('hapus-img.pegawai', ':id' )}}";
+        var textConfirm = "Apakah kamu yakin menghapus icon web?";
+        let url = "{{route('hapus-img.icon', ':id' )}}";
         url = url.replace(':id', id)
         
         if(confirm(textConfirm) == true){
@@ -153,7 +153,27 @@ $(function(){
                 type: "DELETE",
                 url: url,
                 success: function (data){
-                    $(window).attr('location',"{{ route('profile') }}")
+                    $(window).attr('location',"{{ route('info') }}")
+                },
+                error: function(data){
+                    console.log('error: ',data);
+                }
+            });
+        }
+    });
+
+    $(document).on('click','.hapus-img2', function (e) {
+        var id = $('#id').val();
+        var textConfirm = "Apakah kamu yakin menghapus gambar loginscreen?";
+        let url = "{{route('hapus-img.login', ':id' )}}";
+        url = url.replace(':id', id)
+        
+        if(confirm(textConfirm) == true){
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                success: function (data){
+                    $(window).attr('location',"{{ route('info') }}")
                 },
                 error: function(data){
                     console.log('error: ',data);
