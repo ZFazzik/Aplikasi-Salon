@@ -27,7 +27,6 @@ Kamu adalah kasir, kamu tidak diperbolehkan dipage ini.
             <button type="button" class="btn btn-primary float-right add-properti" data-toggle="modal" data-target="#modelId"><i class="fa fa-plus" aria-hidden="true"></i>Add Data</button>
         </div>
         <div class="card-body">
-            <div class="">
                 <table class="table table-bordered data-properti" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -49,7 +48,6 @@ Kamu adalah kasir, kamu tidak diperbolehkan dipage ini.
                     </tfoot>
 
                 </table>
-            </div>
         </div>
     </div>
 
@@ -241,10 +239,8 @@ Kamu adalah kasir, kamu tidak diperbolehkan dipage ini.
                         }
                     });
                 }
-
-               
-
             });
+            
             $(document).on('click','.deleteProperti',function (e) {
                 var id= $(this).data("id");
                 var selectedRows = table.rows('.selected').data();
