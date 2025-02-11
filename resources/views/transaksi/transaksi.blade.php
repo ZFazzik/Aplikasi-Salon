@@ -7,7 +7,9 @@
 @section('css')
 <meta name="csrf-token" content="{{ csrf_token() }}"> 
 
-<link  href="{{asset ('css/jquery.dataTables.min.css')}}" rel="stylesheet">
+<!-- <link  href="{{asset ('css/jquery.dataTables.min.css')}}" rel="stylesheet"> -->
+<link href="https://cdn.datatables.net/v/bs5/dt-2.0.1/datatables.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/3.0.0/css/responsive.bootstrap5.css">
 @stop
 
 
@@ -214,9 +216,11 @@
 
 @section('script')   
 
-    <script src="{{asset ('js/jquery-1.9.1.js')}}"></script>  
-    <script src="{{asset ('vendor/datatables/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset ('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset ('js/jquery-1.9.1.js')}}"></script>
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.0/js/dataTables.responsive.js"></script>
+    <script src="https://cdn.datatables.net/2.0.1/js/dataTables.bootstrap5.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.0/js/responsive.bootstrap5.js"></script>  
     <script src="https://cdn.datatables.net/plug-ins/1.13.2/api/sum().js"></script>
     <!-- <script src="{{asset ('js/demo/datatables-demo.js')}}"></script> -->
 
@@ -238,7 +242,7 @@
             });
 
             var table = $('.data-transaksi').DataTable({
-
+                responsive : true,
                 processing : true,
                 serverSide : true,
                 paging:false,
